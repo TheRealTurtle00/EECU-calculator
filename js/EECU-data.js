@@ -1,7 +1,7 @@
 /*
     IN ORDER TO USE THE DATA IN YOUR PROJECT, Initialize it like so:
 
-    const data = require('./EECU-data.js).data;
+    const data = require('./EECU-data.js').data;
 
     This is only an example. The variable name, variable type (const, let, var), and the require path
     can all be changed to suit your needs.
@@ -34,7 +34,7 @@ const data = [
     [ 'Detective', 60900 ],
     [ 'Diesel Tech/Mechanic', 55650 ],
     [ 'Doctor/Physician', 147000 ],
-    [ 'Blectrician', 54600 ],
+    [ 'Electrician', 54600 ],
     [ 'Electronic Engineer', 75600 ],
     [ 'EMT', 34650 ],
     [ 'Energy Management PG&E', 106050 ],
@@ -51,7 +51,7 @@ const data = [
     [ 'Investment Analyst', 66150 ],
     [ 'Lab Technician', 42000 ],
     [ 'Landscaper Horticulture', 48300 ],
-    [ 'lawyer', 86100 ],
+    [ 'Lawyer', 86100 ],
     [ 'Marketing/Sales Manager', 58800 ],
     [ 'Media/Communications', 45150 ],
     [ 'Medical RepairTech.', 52500 ],
@@ -77,7 +77,7 @@ const data = [
     [ 'UPS/Fed Ex Driver', 68250 ],
     [ 'Veterinarian', 82950 ],
     [ 'Welder/Metal Specialist', 47250 ],
-    [ 'Wind EnergyTechnician', 56700 ]
+    [ 'Wind Energy Technician', 56700 ]
 ]
 
 exports.data = data
