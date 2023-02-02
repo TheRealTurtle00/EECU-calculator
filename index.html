@@ -16,10 +16,18 @@
 
         <section class="inputs">
             <form action="/js/calculatorScript.js">
-                <input list="Careers">
-                <datalist id="Careers"></datalist>
-                <input type="number" name="Salary" id="Salary">
+                <select id="Careers">
+                    <option value="0"></option>
+                    <!-- Populated by script -->
+                </select>
+                <input type="number" name="Salary" id="Salary" placeholder="Salary">
             </form>
+
+            <section class="Deductions">
+                <form action="/js/calculatorScript.js">
+
+                </form>
+            </section>
         </section>
 
 
@@ -30,6 +38,7 @@
 
         <footer>
             Copyright Colby Kirk 2023, any problems in the operation of this product are entirely issues of skill.
+            <p class="finetext">Please note that any skill issues are mine and mine alone</p>
         </footer>
 
 

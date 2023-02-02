@@ -104,20 +104,21 @@ function deductionsFromGross(input){
 console.log (deductionsFromGross(GM));
 
 let datalist = document.getElementById('Careers');
+let salary = document.getElementById("Salary");
+
 
 
 for(job of data){
-    // console.log(job[0]);
     let element = document.createElement('option');
-    element.value = job[0];
-    element.setAttribute("data--salary", job[1]);
-    // element.addEventListener('click',)
+    element.value = job[1];
+    element.innerText= job[0];
 
     datalist.appendChild(element);
 }
 
-function populateSalary{
-    document.getElementById()
+function populateSalary(value){
+    salary.value = value;
+    console.log(value);
 }
 
-datalist.addEventListener('onchange',populateSalary);
+datalist.addEventListener('change', (e) => populateSalary(e.target.value));
