@@ -92,6 +92,10 @@ function populateSalary(value){
 datalist.addEventListener('change', (e) => populateSalary(e.target.value));
 
 // -------------------------------------------------The janky autofill salary ends here
+
+
+
+// -------------------------------------------------The deduction calculations start here
 document.getElementById("FT").value = 12;
 document.getElementById("ST").value = 7;
 document.getElementById("SS").value = 6.2;
@@ -110,10 +114,18 @@ let RI;
 let MI;
 let TotalDeductions = 0;
 
+let netMonthly;
 
-// -------------------------------------------------The deduction calculations start here
+function findNetMonthly(gross, deductions){
+    netMonthly = (parseFloat(gross) - parseFloat(deductions)).toFixed(2);
+    document.getElementById("netMonthly").value = netMonthly;
+    console.log(netMonthly);
+    return netMonthly;
+}
+
 function runGross(grossAnnual){
     GM = (parseFloat(grossAnnual)/12).toFixed(3);
+    document.getElementById("grossMonthly").value = GM;
     return GM;
 }
 
@@ -134,12 +146,10 @@ function runDeductions(){
     MI = parseFloat(document.getElementById("MI").value);
     // console.log(MI);
     TotalDeductions = parseFloat(FT) + parseFloat(ST) + parseFloat(SS) + parseFloat(MC) + parseFloat(SD) + parseFloat(RI) + parseFloat(MI);
+    findNetMonthly(GM,TotalDeductions);
     return TotalDeductions.toFixed(2);
 }
 runDeductions();
-
-console.log(document.getElementById("TD").value)
-
 
 function populateDeduction(deduciton){
     document.getElementById("TD").value = deduciton;
@@ -149,15 +159,3 @@ function populateDeduction(deduciton){
 datalist.addEventListener('change', (e)=> populateDeduction(runDeductions(e)));
 salary.addEventListener('change', (e)=> populateDeduction(runDeductions(e)));
 // -------------------------------------------------The deduction calculations ends here
-// -------------------------------------------------Finding Net Monthly starts here
-let netMonthly;
-function findNetMonthly(gross, deductions){
-    netMonthly = parseFloat(gross) - parseFloat(deductions);
-    document.getElementById("netMonthly").value = netMonthly;
-    return netMonthly;
-}
-
-TotalDeductions.addEventListener('change', (e)=> findNetMonthly(GM,e));
-GM.addEventListener('change', (e)=> findNetMonthly(e, TotalDeductions));
-
-// -------------------------------------------------Finding Net Monthly ends here
