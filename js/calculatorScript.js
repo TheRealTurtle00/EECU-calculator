@@ -92,36 +92,72 @@ function populateSalary(value){
 datalist.addEventListener('change', (e) => populateSalary(e.target.value));
 
 // -------------------------------------------------The janky autofill salary ends here
+document.getElementById("FT").value = 12;
+document.getElementById("ST").value = 7;
+document.getElementById("SS").value = 6.2;
+document.getElementById("MC").value = 1.45;
+document.getElementById("SD").value = 1;
+document.getElementById("RI").value = 5;
+document.getElementById("MI").value = 180;
+
+let GM;
+let FT;
+let ST;
+let SS;
+let MC;
+let SD;
+let RI;
+let MI;
+let TotalDeductions = 0;
 
 
 // -------------------------------------------------The deduction calculations start here
-let GM = salary.value/12;
-    let FT = GM * document.getElementById("FT").value/100;
-    let ST = GM * document.getElementById("ST").value/100;
-    let SS = GM * document.getElementById("SS").value/100;
-    let MC = GM * document.getElementById("MC").value/100;
-    let SD = GM * document.getElementById("SD").value/100;
-    let RI = GM * document.getElementById("RI").value/100;
-    let MI = document.getElementById("MI").value;
-
-function deductionsFromGross(theInput){
-    let TotalDeductions = theInput - FT - ST - SS - MC - SD - RI - MI;
-    return(TotalDeductions);
+function runGross(grossAnnual){
+    GM = (parseFloat(grossAnnual)/12).toFixed(3);
+    return GM;
 }
-let TD = deductionsFromGross(GM);
-console.log(deductionsFromGross(GM));
+
+function runDeductions(){
+    runGross(salary.value);
+    FT = (GM * parseFloat(document.getElementById("FT").value)/100).toFixed(2);
+    // console.log(FT);
+    ST = (GM * parseFloat(document.getElementById("ST").value)/100).toFixed(2);
+    // console.log(ST);
+    SS = (GM * parseFloat(document.getElementById("SS").value)/100).toFixed(2);
+    // console.log(SS);
+    MC = (GM * parseFloat(document.getElementById("MC").value)/100).toFixed(2);
+    // console.log(MC);
+    SD = (GM * parseFloat(document.getElementById("SD").value)/100).toFixed(2);
+    // console.log(SD);
+    RI = (GM * parseFloat(document.getElementById("RI").value)/100).toFixed(2);
+    // console.log(RI);
+    MI = parseFloat(document.getElementById("MI").value);
+    // console.log(MI);
+    TotalDeductions = parseFloat(FT) + parseFloat(ST) + parseFloat(SS) + parseFloat(MC) + parseFloat(SD) + parseFloat(RI) + parseFloat(MI);
+    return TotalDeductions.toFixed(2);
+}
+runDeductions();
+
+console.log(document.getElementById("TD").value)
+
 
 function populateDeduction(deduciton){
     document.getElementById("TD").value = deduciton;
-    console.log(deduction);
 }
-// --------------------------------------------------FIXME: this function does not work
 
 
-
-datalist.addEventListener('change' , populateDeduction(TD));
-
-populateDeduction(TD);
-
-
+datalist.addEventListener('change', (e)=> populateDeduction(runDeductions(e)));
+salary.addEventListener('change', (e)=> populateDeduction(runDeductions(e)));
 // -------------------------------------------------The deduction calculations ends here
+// -------------------------------------------------Finding Net Monthly starts here
+let netMonthly;
+function findNetMonthly(gross, deductions){
+    netMonthly = parseFloat(gross) - parseFloat(deductions);
+    document.getElementById("netMonthly").value = netMonthly;
+    return netMonthly;
+}
+
+TotalDeductions.addEventListener('change', (e)=> findNetMonthly(GM,e));
+GM.addEventListener('change', (e)=> findNetMonthly(e, TotalDeductions));
+
+// -------------------------------------------------Finding Net Monthly ends here
