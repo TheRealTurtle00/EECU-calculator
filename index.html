@@ -15,18 +15,41 @@
         </header>
 
         <section class="inputs">
-            <form action="/js/calculatorScript.js">
-                <select id="Careers">
-                    <option value="0"></option>
+            <form action="">
+                Career choice:<select id="Careers">
                     <!-- Populated by script -->
                 </select>
-                <input type="number" name="Salary" id="Salary" placeholder="Salary">
+                Yearly salary:<input type="number" name="Salary" id="Salary" placeholder="Salary">
             </form>
 
             <section class="Deductions">
-                <form action="/js/calculatorScript.js">
-
-                </form>
+                Deductions:
+                <form action="" id="deductionZone">
+                    <div class="deductionSpacer">
+                        <input type="number" name="Federal Tax" id="FT" value="12" placeholder="Federal Tax">%
+                    </div>
+                    <div class="deductionSpacer">
+                        <input type="number" name="State Taxes" id="ST" value="7" placeholder="State Taxes">%
+                    </div>
+                    <div class="deductionSpacer">
+                        <input type="number" name="Social Security" id="SS" value="6.2" placeholder="Social Security">%
+                    </div>
+                    <div class="deductionSpacer">
+                        <input type="number" name="Medicare" id="MC" value="1.45" placeholder="Medicare">%
+                    </div>
+                    <div class="deductionSpacer">
+                        <input type="number" name="State Disability" id="SD" value="1" placeholder="State Disability">%
+                    </div>
+                    <div class="deductionSpacer">
+                        <input type="number" name="Retirement Inventment" id="RI" value="5" placeholder="Retirement investment">%
+                    </div>
+                    <div class="deductionSpacer">
+                        $<input type="number" name="Medical Insurance" id="MI" value="180" placeholder="Medical Insurance">
+                    </div>
+                    <div class="deductionSpacer totalDeductions">
+                        Total deductions: $<input type="number" name="Total Deductions" id="TD" placeholder="Total Deductions" value="0" disabled>
+                    </div>
+                    </form>
             </section>
         </section>
 
@@ -35,7 +58,7 @@
             
         </section>
 
-
+        <br>
         <footer>
             Copyright Colby Kirk 2023, any problems in the operation of this product are entirely issues of skill.
             <p class="finetext">Please note that any skill issues are mine and mine alone</p>
