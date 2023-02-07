@@ -112,6 +112,7 @@ let MC;
 let SD;
 let RI;
 let MI;
+let housePay;
 let TotalDeductions = 0;
 
 let netMonthly;
@@ -132,30 +133,38 @@ function runGross(grossAnnual){
 function runDeductions(){
     runGross(salary.value);
     FT = (GM * parseFloat(document.getElementById("FT").value)/100).toFixed(2);
-    // console.log(FT);
     ST = (GM * parseFloat(document.getElementById("ST").value)/100).toFixed(2);
-    // console.log(ST);
     SS = (GM * parseFloat(document.getElementById("SS").value)/100).toFixed(2);
-    // console.log(SS);
     MC = (GM * parseFloat(document.getElementById("MC").value)/100).toFixed(2);
-    // console.log(MC);
     SD = (GM * parseFloat(document.getElementById("SD").value)/100).toFixed(2);
-    // console.log(SD);
     RI = (GM * parseFloat(document.getElementById("RI").value)/100).toFixed(2);
-    // console.log(RI);
     MI = parseFloat(document.getElementById("MI").value);
-    // console.log(MI);
+    housePay = parseFloat(GM * 0.33333).toFixed(2);
     TotalDeductions = parseFloat(FT) + parseFloat(ST) + parseFloat(SS) + parseFloat(MC) + parseFloat(SD) + parseFloat(RI) + parseFloat(MI);
     findNetMonthly(GM,TotalDeductions);
+
     return TotalDeductions.toFixed(2);
 }
 runDeductions();
 
 function populateDeduction(deduciton){
     document.getElementById("TD").value = deduciton;
+    document.getElementById("housePayment").value = housePay;
 }
 
 
 datalist.addEventListener('change', (e)=> populateDeduction(runDeductions(e)));
 salary.addEventListener('change', (e)=> populateDeduction(runDeductions(e)));
 // -------------------------------------------------The deduction calculations ends here
+
+
+
+// -------------------------------------------------The following code will likely be scuffed
+const newRowButton = document.querySelector(".pleaseWork");
+
+function newCheckbookRow(){
+    document.createElement("div.checkRow");
+
+}
+
+document.querySelector(".pleaseWork").addEventListener("click", (e)=> newCheckbookRow(e));

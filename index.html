@@ -6,74 +6,104 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Checkbook Calculator</title>
         <link rel="stylesheet" href="/css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
     </head>
     <body>
         <header>
             <section class="topBar">
-                <h1>Colby Checkbook Calculator Corporation</h1>
+                <h1>Colby Checkbook Calculator Corporation Composite</h1>
             </section>
         </header>
 
-        <section class="inputs">
-            <form action="">
-                Career choice:<select id="Careers">
-                    <!-- Populated by script -->
-                </select>
-                Yearly salary: $<input type="number" name="Salary" id="Salary" placeholder="Salary">
-                Gross Monthly Income: $<input type="number" name="Gross Monthly" placeholder="Gross Monthly" id="grossMonthly" disabled>
-            </form>
+<section class="allContent">
+    <section class="inputs">
+        <form action="">
+            Career choice:<select id="Careers">
+                <!-- Populated by script -->
+            </select>
+            Yearly salary: $<input type="number" name="Salary" id="Salary" placeholder="Salary">
+            Gross Monthly Income: $<input type="number" name="Gross Monthly" placeholder="Gross Monthly" id="grossMonthly" disabled>
+        </form>
 
-            <section class="Deductions">
-                Deductions:
-                <form action="" id="deductionZone">
-                    <div class="deductionSpacer">
-                        Federal Tax: 
-                        <input type="number" name="Federal Tax" id="FT" value="12" placeholder="Federal Tax">%
-                    </div>
-                    <div class="deductionSpacer">
-                        State Taxes: 
-                        <input type="number" name="State Taxes" id="ST" value="7" placeholder="State Taxes">%
-                    </div>
-                    <div class="deductionSpacer">
-                        Social Security: 
-                        <input type="number" name="Social Security" id="SS" value="6.2" placeholder="Social Security">%
-                    </div>
-                    <div class="deductionSpacer">
-                        Medicare: 
-                        <input type="number" name="Medicare" id="MC" value="1.45" placeholder="Medicare">%
-                    </div>
-                    <div class="deductionSpacer">
-                        State Disability: 
-                        <input type="number" name="State Disability" id="SD" value="1" placeholder="State Disability">%
-                    </div>
-                    <div class="deductionSpacer">
-                        Retirement Investment: 
-                        <input type="number" name="Retirement Inventment" id="RI" value="5" placeholder="Retirement investment">%
-                    </div>
-                    <div class="deductionSpacer">
-                        Medical Insurance: 
-                        $<input type="number" name="Medical Insurance" id="MI" value="180" placeholder="Medical Insurance">
-                    </div>
-                    <div class="deductionSpacer totalDeductions">
-                        Total deductions: $<input type="number" name="Total Deductions" id="TD" placeholder="Total Deductions" value="0" disabled>
-                    </div>
-                    </form>
-            </section>
+        <section class="Deductions">
+            Deductions:
+            <form action="" id="deductionZone">
+                <div class="deductionSpacer">
+                    Federal Tax: 
+                    <input type="number" name="Federal Tax" id="FT" value="12" placeholder="Federal Tax">%
+                </div>
+                <div class="deductionSpacer">
+                    State Taxes: 
+                    <input type="number" name="State Taxes" id="ST" value="7" placeholder="State Taxes">%
+                </div>
+                <div class="deductionSpacer">
+                    Social Security: 
+                    <input type="number" name="Social Security" id="SS" value="6.2" placeholder="Social Security">%
+                </div>
+                <div class="deductionSpacer">
+                    Medicare: 
+                    <input type="number" name="Medicare" id="MC" value="1.45" placeholder="Medicare">%
+                </div>
+                <div class="deductionSpacer">
+                    State Disability: 
+                    <input type="number" name="State Disability" id="SD" value="1" placeholder="State Disability">%
+                </div>
+                <div class="deductionSpacer">
+                    Retirement Investment: 
+                    <input type="number" name="Retirement Inventment" id="RI" value="5" placeholder="Retirement investment">%
+                </div>
+                <div class="deductionSpacer">
+                    Medical Insurance: 
+                    $<input type="number" name="Medical Insurance" id="MI" value="180" placeholder="Medical Insurance">
+                </div>
+                <div class="deductionSpacer totalDeductions">
+                    Total deductions: $<input type="number" name="Total Deductions" id="TD" placeholder="Total Deductions" value="0" disabled>
+                </div>
+                </form>
         </section>
+    </section>
 
 
-        <section class="output">
+    <section class="output">
+        <div class="netMonthly">
             Net Monthly Income: $
             <input type="number" name="Net Monthly" id="netMonthly" placeholder="Net Monthly" disabled>
-            Maximum Monthly House Payment: $
-            <input type="number" name="house payment" id="housePayment" placeholder="House Payment" disabled>
-        </section>
+        </div>
+        Maximum Monthly House Payment: $
+        <input type="number" name="house payment" id="housePayment" placeholder="House Payment" disabled>
+    </section>
 
-        <br>
+
+    <section class="checkbook">
+        <form action="">
+            <div class="checkRow">
+                <input type="date">
+                <input type="text" id="" placeholder="Transaction Description">
+                <select name="transactionType" id="">
+                    <option value="1">Deposit</option>
+                    <option value="-1">Withdrawal</option>
+                </select>
+                <input type="number" id="" placeholder="Amount">
+                <input type="number" id="" placeholder="Balance" disabled>
+            </div>
+        </form>
+        <input type="button" class="pleaseWork" id="newRowButton" value="New Transaction">
+    </section>
+</section>
+        
+
+
+
+
+
+
+
+
         <footer>
             Copyright Colby Kirk 2023, any problems in the operation of this product are entirely issues of skill.
         </footer>
-
 
         <script src="/js/calculatorScript.js"></script>
 
