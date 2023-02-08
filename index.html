@@ -78,14 +78,16 @@
 
     <section class="checkbook">
         <form action="">
-            <div class="checkRow">
-                <input type="date">
-                <input type="text" id="" placeholder="Transaction Description">
-                <input type="number" id="" placeholder="">
-                <input type="number" id="" placeholder="">
-                <input type="number" id="" placeholder="Amount">
-                <input type="number" id="" placeholder="Balance" disabled>
-            </div>
+            <section class="checkbookHolder">
+                <section class="checkRow">
+                    <input type="date">
+                    <input type="text" id="" placeholder="Transaction Description">
+                    <input type="number" id="" placeholder="Withdrawal Amount">
+                    <input type="number" id="" placeholder="Deposit Amount">
+                    <input type="number" id="" placeholder="Amount">
+                    <input type="number" id="" placeholder="Balance" disabled>
+                </section>
+            </section>
         </form>
         <input type="button" class="pleaseWork" id="newRowButton" value="New Transaction">
     </section>

@@ -161,10 +161,90 @@ salary.addEventListener('change', (e)=> populateDeduction(runDeductions(e)));
 
 // -------------------------------------------------The following code will likely be scuffed
 const newRowButton = document.querySelector(".pleaseWork");
+let rowList = document.getElementsByClassName("checkRow");
+let bookLength = rowList.length;
+let checkRow;
+let description;
+let deposit;
+let withdrawal;
+let balance;
 
 function newCheckbookRow(){
-    document.createElement("div.checkRow");
+    rowList = document.getElementsByClassName("checkRow");
+    bookLength = rowList.length;
 
+    checkRow = document.createElement('section');
+    checkRow.setAttribute('id',`entry${bookLength}`);
+    checkRow.setAttribute('class', 'checkRow');
+
+    description = document.createElement('input');
+    description.setAttribute('id', `description${bookLength}`);
+    description.setAttribute('placeholder', 'Transaction Description')
+    description.addEventListener();
+// TODO: Event listener
+    deposit = document.createElement('input');
+    deposit.setAttribute('id',`deposit${bookLength}`);
+    deposit.setAttribute('type', 'number');
+    deposit.setAttribute('placeholder', 'Deposit');
+    deposit.addEventListener();
+// TODO: Event listener
+    withdrawal = document.createElement('input');
+    withdrawal.setAttribute('id',`withdrawal${bookLength}`);
+    withdrawal.setAttribute('type', 'number');
+    withdrawal.setAttribute('placeholder', 'Withdrawal');
+    withdrawal.addEventListener();
+// TODO: Event listener
+    balance = document.createElement('input');
+    balance.setAttribute('id', `balance${bookLength}`)
+    balance.setAttribute('placeholder', Balance);
+    balance.setAttribute('disabled');
+
+    checkRow.appendChild(description);
+    checkRow.appendChild(deposit);
+    checkRow.appendChild(withdrawal);
+    checkRow.appendChild(balance);
 }
+
+function calculateCheckbook(){
+    for(let i = 2; i<rowList.length; i++){
+        calculateRow(i);
+    }
+}
+
+function calculateRow(rowNumber){
+    rowList = document.getElementsByClassName('checkRow');
+    let thisDescription;
+    let thisDeposit;
+    let thisWithdrawal;
+    let thisBalance;
+    let prevBalance;
+    thisDescription = document.getValuebyID("description${bookLength}");
+    thisDeposit = document.getValuebyID("deposit${bookLength}");
+    thisWithdrawal = document.getValuebyID("withdrawal${bookLength}");
+    thisBalance = document.getValuebyID("balance${bookLength}");
+
+    let withdrawalValue = withdrawal.value;
+    let depositValue = deposit.value;
+    if (withdrawal.value==""){
+        withdrawalValue = 0;
+    }
+    if (deposit.value==""){
+        depositValue = 0;
+    }
+
+    if (checkRow == 1){
+        prevBalance = document.getElementById("netMonthly").value;
+    } else {
+        eval(`prevBalance = document.getElementById("${checkRow-1}").value;`);
+    }
+    thisBalance.value = parseFloat(prevBalance-withdrawalValue+depositValue);
+
+    if (checkRow=rowList.length-1){
+        if(withdrawalValue!=0 || depositValue != 0 || description.value !=""){
+            newCheckbookRow();
+        }
+    }
+}
+
 
 document.querySelector(".pleaseWork").addEventListener("click", (e)=> newCheckbookRow(e));
