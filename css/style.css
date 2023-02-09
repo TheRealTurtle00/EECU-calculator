@@ -99,4 +99,11 @@ input{
 
 footer{
     background-color: #4695EA;
+    height: 6vh;
+    padding-top: 1vh;
+}
+
+footer > a{
+    text-decoration: none;
+    color: black;
 }
