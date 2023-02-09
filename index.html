@@ -29,7 +29,7 @@
 
         <section class="Deductions">
             Deductions:
-            <form action="" id="deductionZone">
+            
                 <div class="deductionSpacer">
                     Federal Tax: 
                     <input type="number" name="Federal Tax" id="FT" value="12" placeholder="Federal Tax">%
@@ -61,7 +61,7 @@
                 <div class="deductionSpacer totalDeductions">
                     Total deductions: $<input type="number" name="Total Deductions" id="TD" placeholder="Total Deductions" value="0" disabled>
                 </div>
-                </form>
+                
         </section>
     </section>
 
@@ -78,15 +78,8 @@
 
     <section class="checkbook">
         <form action="">
-            <section class="checkbookHolder">
-                <section class="checkRow">
-                    <input type="date">
-                    <input type="text" id="" placeholder="Transaction Description">
-                    <input type="number" id="" placeholder="Withdrawal Amount">
-                    <input type="number" id="" placeholder="Deposit Amount">
-                    <input type="number" id="" placeholder="Amount">
-                    <input type="number" id="" placeholder="Balance" disabled>
-                </section>
+            <section class="checkbookHolder" id="checkbookHolder">
+                
             </section>
         </form>
         <input type="button" class="pleaseWork" id="newRowButton" value="New Transaction">

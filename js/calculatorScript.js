@@ -121,6 +121,7 @@ function findNetMonthly(gross, deductions){
     netMonthly = (parseFloat(gross) - parseFloat(deductions)).toFixed(2);
     document.getElementById("netMonthly").value = netMonthly;
     console.log(netMonthly);
+    setIncomeCheck();
     return netMonthly;
 }
 
@@ -162,6 +163,7 @@ salary.addEventListener('change', (e)=> populateDeduction(runDeductions(e)));
 // -------------------------------------------------The following code will likely be scuffed
 const newRowButton = document.querySelector(".pleaseWork");
 let rowList = document.getElementsByClassName("checkRow");
+let theWholeBook = document.getElementById("checkbookHolder")
 let bookLength = rowList.length;
 let checkRow;
 let description;
@@ -180,29 +182,30 @@ function newCheckbookRow(){
     description = document.createElement('input');
     description.setAttribute('id', `description${bookLength}`);
     description.setAttribute('placeholder', 'Transaction Description')
-    description.addEventListener();
-// TODO: Event listener
+    description.addEventListener('change', (e)=> calculateCheckbook());
+
     deposit = document.createElement('input');
     deposit.setAttribute('id',`deposit${bookLength}`);
     deposit.setAttribute('type', 'number');
     deposit.setAttribute('placeholder', 'Deposit');
-    deposit.addEventListener();
-// TODO: Event listener
+    deposit.addEventListener('change', (e)=> calculateCheckbook());
+
     withdrawal = document.createElement('input');
     withdrawal.setAttribute('id',`withdrawal${bookLength}`);
     withdrawal.setAttribute('type', 'number');
     withdrawal.setAttribute('placeholder', 'Withdrawal');
-    withdrawal.addEventListener();
-// TODO: Event listener
+    withdrawal.addEventListener('change', (e)=> calculateCheckbook());
+
     balance = document.createElement('input');
     balance.setAttribute('id', `balance${bookLength}`)
-    balance.setAttribute('placeholder', Balance);
-    balance.setAttribute('disabled');
+    balance.setAttribute('placeholder', "balance");
+    balance.setAttribute('disabled', "");
 
     checkRow.appendChild(description);
     checkRow.appendChild(deposit);
     checkRow.appendChild(withdrawal);
     checkRow.appendChild(balance);
+    theWholeBook.appendChild(checkRow);
 }
 
 function calculateCheckbook(){
@@ -216,15 +219,15 @@ function calculateRow(rowNumber){
     let thisDescription;
     let thisDeposit;
     let thisWithdrawal;
-    let thisBalance;
     let prevBalance;
-    thisDescription = document.getValuebyID("description${bookLength}");
-    thisDeposit = document.getValuebyID("deposit${bookLength}");
-    thisWithdrawal = document.getValuebyID("withdrawal${bookLength}");
-    thisBalance = document.getValuebyID("balance${bookLength}");
+    thisDescription = document.getValuebyID("description${rowNumber}");
+    thisDeposit = document.getValuebyID("deposit${rowNumber}");
+    thisWithdrawal = document.getValuebyID("withdrawal${rowNumber}");
+    thisBalance = document.getValuebyID("balance${rowNumber}");
 
     let withdrawalValue = withdrawal.value;
     let depositValue = deposit.value;
+
     if (withdrawal.value==""){
         withdrawalValue = 0;
     }
@@ -232,19 +235,27 @@ function calculateRow(rowNumber){
         depositValue = 0;
     }
 
-    if (checkRow == 1){
-        prevBalance = document.getElementById("netMonthly").value;
+    if (rowNumber == 0){
+        prevBalance = netMonthly;
     } else {
-        eval(`prevBalance = document.getElementById("${checkRow-1}").value;`);
+        eval(`prevBalance = document.getElementById("${rowNumber-1}").value;`);
     }
-    thisBalance.value = parseFloat(prevBalance-withdrawalValue+depositValue);
+    document.getElementById(`balance${bookLength}`).value = parseFloat(prevBalance-withdrawalValue+depositValue).toFixed(2);
 
-    if (checkRow=rowList.length-1){
+    if (rowNumber==rowList.length-1){
         if(withdrawalValue!=0 || depositValue != 0 || description.value !=""){
             newCheckbookRow();
         }
     }
 }
+newCheckbookRow();
 
+function setIncomeCheck(){
+    let firstDeposit = document.getElementById("deposit0");
+    let firstBalance = document.getElementById("balance0");
+    firstDeposit.setAttribute("type", "number");
+    firstDeposit.value = parseFloat(netMonthly);
+    firstBalance.value = parseFloat(netMonthly);
+}
 
-document.querySelector(".pleaseWork").addEventListener("click", (e)=> newCheckbookRow(e));
+document.querySelector(".pleaseWork").addEventListener("click", (e)=> newCheckbookRow());
