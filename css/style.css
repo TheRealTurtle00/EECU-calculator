@@ -20,6 +20,10 @@ h1{
     font-size: 60px;
 }
 
+h2{
+    margin-top: 0;
+}
+
 .allContent{
     width: 100%;
     background-color: #003166;
@@ -33,12 +37,60 @@ h1{
     background-color: #A5C5E8;
     width: 60%;
     padding: 2vh;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+}
+
+.allContent > section:first-of-type{
+    margin-top: 2vh;
+}
+
+.allContent > section:last-of-type{
+    margin-bottom: 2vh;
+}
+
+input{
+    border-radius: 0;
+    outline: none !important;
+    margin: 0;
+}
+
+.unscrewificator > input{
+    min-width: 60px;
+    width: 4vw;
+}
+
+.inputSpacer{
+    display: flex;
+    justify-content: space-between;
 }
 
 .deductionSpacer{
-    width: 90%;
+    display: flex;
+    justify-content: space-between;
 }
 
+.outputSpacer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputSpacer,
+.outputSpacer,
+.deductionSpacer{
+    border-bottom: black 1px solid;
+}
+
+.inputSpacer:last-of-type,
+.outputSpacer:last-of-type,
+.deductionSpacer:last-of-type{
+    border-bottom: 0;
+}
+
+.checkRow{
+    display: flex;
+    justify-content: left;
+}
 
 
 

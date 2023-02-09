@@ -1,4 +1,5 @@
 const data = [
+    ['Choose Career', 0],
     [ 'Accountant', 55650 ],
     [ 'Advance Tractor/Trailer Driver', 53550 ],
     [ 'Agricultural Engineer', 56700 ],
@@ -126,7 +127,7 @@ function findNetMonthly(gross, deductions){
 }
 
 function runGross(grossAnnual){
-    GM = (parseFloat(grossAnnual)/12).toFixed(3);
+    GM = (parseFloat(grossAnnual)/12).toFixed(2);
     document.getElementById("grossMonthly").value = GM;
     return GM;
 }
@@ -209,7 +210,7 @@ function newCheckbookRow(){
 }
 
 function calculateCheckbook(){
-    for(let i = 2; i<rowList.length; i++){
+    for(let i = 0; i<rowList.length; i++){
         calculateRow(i);
     }
 }
@@ -220,33 +221,30 @@ function calculateRow(rowNumber){
     let thisDeposit;
     let thisWithdrawal;
     let prevBalance;
-    thisDescription = document.getValuebyID("description${rowNumber}");
-    thisDeposit = document.getValuebyID("deposit${rowNumber}");
-    thisWithdrawal = document.getValuebyID("withdrawal${rowNumber}");
-    thisBalance = document.getValuebyID("balance${rowNumber}");
+    thisDescription = document.getElementById(`description${rowNumber}`);
+    thisDeposit = document.getElementById(`deposit${rowNumber}`);
+    thisWithdrawal = document.getElementById(`withdrawal${rowNumber}`);
+    thisBalance = document.getElementById(`balance${rowNumber}`);
 
-    let withdrawalValue = withdrawal.value;
-    let depositValue = deposit.value;
+    let withdrawalValue = thisWithdrawal.value;
+    let depositValue = thisDeposit.value;
 
-    if (withdrawal.value==""){
+    if (thisWithdrawal.value==""){
         withdrawalValue = 0;
     }
-    if (deposit.value==""){
+    if (thisDeposit.value==""){
         depositValue = 0;
     }
 
     if (rowNumber == 0){
         prevBalance = netMonthly;
     } else {
-        eval(`prevBalance = document.getElementById("${rowNumber-1}").value;`);
+        prevBalance = document.getElementById(`balance${rowNumber-1}`).value;
     }
-    document.getElementById(`balance${bookLength}`).value = parseFloat(prevBalance-withdrawalValue+depositValue).toFixed(2);
+    console.log(parseFloat(prevBalance-withdrawalValue+depositValue).toFixed(2));
+    console.log(thisDeposit.value);
+    thisBalance.value = parseFloat(prevBalance-withdrawalValue+parseFloat(depositValue)).toFixed(2);
 
-    if (rowNumber==rowList.length-1){
-        if(withdrawalValue!=0 || depositValue != 0 || description.value !=""){
-            newCheckbookRow();
-        }
-    }
 }
 newCheckbookRow();
 

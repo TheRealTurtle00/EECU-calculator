@@ -20,66 +20,117 @@
 <section class="allContent">
     <section class="inputs">
         <form action="">
-            Career choice:<select id="Careers">
+            <div class="inputSpacer">
+                Career choice:<select id="Careers">
                 <!-- Populated by script -->
             </select>
-            Yearly salary: $<input type="number" name="Salary" id="Salary" placeholder="Salary">
-            Gross Monthly Income: $<input type="number" name="Gross Monthly" placeholder="Gross Monthly" id="grossMonthly" disabled>
-        </form>
-
-        <section class="Deductions">
-            Deductions:
+            </div>
             
-                <div class="deductionSpacer">
-                    Federal Tax: 
+            <div class="inputSpacer">
+                Yearly salary: 
+                <div class="unscrewificator">
+                    $<input type="number" name="Salary" id="Salary" placeholder="Salary">
+                </div>
+            </div>
+            <div class="inputSpacer">
+                Gross Monthly Income: 
+                <div class="unscrewificator">
+                    $<input type="number" name="Gross Monthly" placeholder="Gross Monthly" id="grossMonthly" disabled>
+                </div>
+            </div>
+            
+        </form>
+    </section>
+
+    <section class="Deductions">
+        Deductions:
+        
+            <div class="deductionSpacer">
+                Federal Tax: 
+                <div class="unscrewificator">
                     <input type="number" name="Federal Tax" id="FT" value="12" placeholder="Federal Tax">%
                 </div>
-                <div class="deductionSpacer">
-                    State Taxes: 
+            </div>
+            <div class="deductionSpacer">
+                State Taxes: 
+                <div class="unscrewificator">
                     <input type="number" name="State Taxes" id="ST" value="7" placeholder="State Taxes">%
                 </div>
-                <div class="deductionSpacer">
-                    Social Security: 
+                
+            </div>
+            <div class="deductionSpacer">
+                Social Security: 
+                <div class="unscrewificator">
                     <input type="number" name="Social Security" id="SS" value="6.2" placeholder="Social Security">%
                 </div>
-                <div class="deductionSpacer">
-                    Medicare: 
+                
+            </div>
+            <div class="deductionSpacer">
+                Medicare: 
+                <div class="unscrewificator">
                     <input type="number" name="Medicare" id="MC" value="1.45" placeholder="Medicare">%
                 </div>
-                <div class="deductionSpacer">
-                    State Disability: 
+                
+            </div>
+            <div class="deductionSpacer">
+                State Disability: 
+                <div class="unscrewificator">
                     <input type="number" name="State Disability" id="SD" value="1" placeholder="State Disability">%
                 </div>
-                <div class="deductionSpacer">
-                    Retirement Investment: 
+                
+            </div>
+            <div class="deductionSpacer">
+                Retirement Investment: 
+                <div class="unscrewificator">
                     <input type="number" name="Retirement Inventment" id="RI" value="5" placeholder="Retirement investment">%
                 </div>
-                <div class="deductionSpacer">
-                    Medical Insurance: 
+                
+            </div>
+            <div class="deductionSpacer">
+                Medical Insurance: 
+                <div class="unscrewificator">
                     $<input type="number" name="Medical Insurance" id="MI" value="180" placeholder="Medical Insurance">
                 </div>
-                <div class="deductionSpacer totalDeductions">
-                    Total deductions: $<input type="number" name="Total Deductions" id="TD" placeholder="Total Deductions" value="0" disabled>
+                
+            </div>
+            <div class="deductionSpacer totalDeductions">
+                Total deductions: 
+                <div class="unscrewificator">
+                    $<input type="number" name="Total Deductions" id="TD" placeholder="Total Deductions" value="0" disabled>
                 </div>
                 
-        </section>
+            </div>
+            
     </section>
 
 
     <section class="output">
-        <div class="netMonthly">
-            Net Monthly Income: $
-            <input type="number" name="Net Monthly" id="netMonthly" placeholder="Net Monthly" disabled>
+        <div class="outputSpacer netMonthly">
+            Net Monthly Income: 
+            <div class="unscrewificator">
+                $<input type="number" name="Net Monthly" id="netMonthly" placeholder="Net Monthly" disabled>
+            </div>
         </div>
-        Maximum Monthly House Payment: $
-        <input type="number" name="house payment" id="housePayment" placeholder="House Payment" disabled>
+        
+        <div class="outputSpacer">Maximum Monthly House Payment: 
+            <div class="unscrewificator">
+            $<input type="number" name="house payment" id="housePayment" placeholder="House Payment" disabled>
+        </div>
+        </div>
+
     </section>
 
 
     <section class="checkbook">
+        <h2>Checkbook:</h2>
         <form action="">
             <section class="checkbookHolder" id="checkbookHolder">
-                
+                <section class="checkRow">
+                    <input type="text" id="description0" placeholder="Transaction Description" value="Paycheck" disabled>
+                    <input type="text" id="deposit0" type="number" placeholder="Deposit" disabled>
+                    <input type="text" id="withdrawal0" type="number" placeholder="Withdrawal" disabled>
+                    <input type="text" id="balance0" type="number" placeholder="Balance" disabled>
+                </section>
             </section>
         </form>
         <input type="button" class="pleaseWork" id="newRowButton" value="New Transaction">
